@@ -21,7 +21,8 @@ const getAllUsers = asyncHandler(async (req, res) => {
 //************ @route POST /user
 //************ @access Private
 const createNewUser = asyncHandler(async (req, res) => {
-  const { username, password, email, role } = req.body;
+  const { username, password, email, role, active } = req.body;
+  console.log("controller createNewUser");
 
   // Confirm data
   if (!username || !password || !email) {
