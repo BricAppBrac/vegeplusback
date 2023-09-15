@@ -1,4 +1,5 @@
 const dotenv = require("dotenv").config();
+require("express-async-errors");
 const express = require("express");
 const app = express();
 const connectDB = require("./config/db");
@@ -16,7 +17,7 @@ const corsOptions = require("./config/corsOptions");
 const mongoose = require("mongoose"); // pourquoi ?
 const port = process.env.PORT || 5000;
 // const port = 5000;
-console.log(process.env.NODE_ENV);
+// console.log(process.env.NODE_ENV);
 
 // Importation Nodemailer***
 const nodemailer = require("nodemailer");
@@ -25,9 +26,17 @@ const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
   service: "yahoo",
   auth: {
+    // user: process.env.EMAIL_USERNAME,
     user: process.env.EMAIL_USERNAME,
     pass: process.env.EMAIL_PASSWORD,
   },
+  // host: "smtp.office365.com",
+  // port: 587,
+  // secure: true,
+  // auth: {
+  //   user: process.env.EMAIL_USERNAME,
+  //   pass: process.env.EMAIL_PASSWORD,
+  // },
 });
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++//

@@ -1,14 +1,12 @@
 const UserModel = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-// méthodes asynchrones plutôt que de nombreux try/catch
-const asyncHandler = require("express-async-handler");
 
 //************ description signup */
 //************ @route POST /auth
 //************ @access Public
 
-const signup = asyncHandler(async (req, res) => {
+const signup = async (req, res) => {
   const { email, password, username } = req.body;
   if (!email || !password || !username) {
     return res
@@ -56,12 +54,12 @@ const signup = asyncHandler(async (req, res) => {
         .catch((error) => res.status(400).json({ error }));
     })
     .catch((error) => res.status(500).json({ error }));
-});
+};
 
 //************ description Login */
 //************ @route POST /auth
 //************ @access Public
-const login = asyncHandler(async (req, res) => {
+const login = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
     return res
@@ -115,7 +113,7 @@ const login = asyncHandler(async (req, res) => {
 
   // Send accessToken containing username and role
   res.json({ accessToken });
-});
+};
 //************ description Refresh */
 //************ @route GET /auth/refresh
 //************ @access Public - because access token has expired
@@ -132,7 +130,7 @@ const refresh = (req, res) => {
   jwt.verify(
     refreshToken,
     process.env.REFRESH_TOKEN_SECRET,
-    asyncHandler(async (err, decoded) => {
+    async (err, decoded) => {
       if (err) return res.status(403).json({ message: "Interdit" });
 
       const foundUser = await UserModel.findOne({ email: decoded.email });
@@ -154,7 +152,7 @@ const refresh = (req, res) => {
         { expiresIn: "15m" }
       );
       res.json({ accessToken });
-    })
+    }
   );
 };
 

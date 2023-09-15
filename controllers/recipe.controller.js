@@ -1,16 +1,14 @@
 const jwt = require("jsonwebtoken");
 const RecipeModel = require("../models/recipe.model");
-// méthodes asynchrones plutôt que de nombreux try/catch
-const asyncHandler = require("express-async-handler");
 
 // fonction pour récupérer toutes les recettes
-module.exports.getRecipes = asyncHandler(async (req, res) => {
+module.exports.getRecipes = async (req, res) => {
   const recipes = await RecipeModel.find();
   if (!recipes?.length) {
     return res.status(400).json({ message: "Pas de recette enregistrée" });
   }
   res.status(200).json(recipes);
-});
+};
 
 // fonction pour créer une recette
 module.exports.setRecipe = async (req, res) => {
@@ -30,31 +28,13 @@ module.exports.setRecipe = async (req, res) => {
   res.status(200).json(recipe);
 };
 
-// fonction pour créer une recette (titre, auteur, saisons, ingrédients, quantités, catégories, steps)
-// module.exports.setCompleteRecipe = async (req, res) => {
-//   if (!req.body.title) {
-//     res.status(400).json({ message: "Merci d'ajouter un titre" });
-//   }
-
-//   const recipe = await RecipeModel.create({
-//     title: req.body.title,
-//     author: req.body.author,
-//     seasons: req.body.seasons,
-//     ingredients: req.body.ingredients,
-//     quantities: req.body.quantities,
-//     categories: req.body.categories,
-//     steps: req.body.steps,
-//   });
-//   res.status(200).json(recipe);
-// };
-
 // fonction pour modifier une recette
 module.exports.editRecipe = async (req, res) => {
   const recipe = await RecipeModel.findById(req.params.id);
-  console.log("editRecipe controller");
-  console.log("req.params.id : " + req.params.id);
-  console.log("recipe : ");
-  console.log(recipe);
+  // console.log("editRecipe controller");
+  // console.log("req.params.id : " + req.params.id);
+  // console.log("recipe : ");
+  // console.log(recipe);
   if (!recipe) {
     res
       .status(400)
@@ -64,29 +44,29 @@ module.exports.editRecipe = async (req, res) => {
   const updateRecipe = await RecipeModel.findByIdAndUpdate(recipe, req.body, {
     new: true,
   });
-  console.log("updateRecipe : " + updateRecipe);
+  // console.log("updateRecipe : " + updateRecipe);
   res.status(200).json(updateRecipe);
-  console.log("status : " + res.statusCode);
+  // console.log("status : " + res.statusCode);
 };
 
 // fonction pour supprimer une recette
 module.exports.deleteRecipe = async (req, res) => {
-  console.log("Recette à supprimer ID:", req.params.id);
+  // console.log("Recette à supprimer ID:", req.params.id);
 
   try {
     const recipe = await RecipeModel.findById(req.params.id);
 
     if (!recipe) {
-      console.log("Recette non trouvée pour suppression:", req.params.id);
+      // console.log("Recette non trouvée pour suppression:", req.params.id);
       return res.status(400).json({
         message: "Suppression impossible. Cette recette n'existe pas",
       });
     }
 
-    console.log("Recette en cours de suppression:", recipe);
+    // console.log("Recette en cours de suppression:", recipe);
     await RecipeModel.findByIdAndDelete(req.params.id);
 
-    console.log("Recette supprimée:", req.params.id);
+    // console.log("Recette supprimée:", req.params.id);
     res.status(200).json({ message: "Recette supprimée " + req.params.id });
   } catch (error) {
     console.error("Erreur lors de la suppression de la recette:", error);

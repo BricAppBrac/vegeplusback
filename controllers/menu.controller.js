@@ -1,19 +1,17 @@
 const MenuModel = require("../models/menu.model");
-// méthodes asynchrones plutôt que de nombreux try/catch
-const asyncHandler = require("express-async-handler");
 
 // fonction pour récupérer tous les menus
-module.exports.getMenus = asyncHandler(async (req, res) => {
+module.exports.getMenus = async (req, res) => {
   const menus = await MenuModel.find();
   if (!menus?.length) {
     return res.status(200).json({ message: "Pas de menu enregistré" });
   } else {
     res.status(200).json(menus);
   }
-});
+};
 
 // fonction pour créer un menu (user, num jour(index), NbMeal, dayOne, meal1Id, meal1Title, meal2Id, meal2Title)
-module.exports.setMenu = asyncHandler(async (req, res) => {
+module.exports.setMenu = async (req, res) => {
   const menu = await MenuModel.create({
     user: req.body.user,
     prefNbJ: req.body.prefNbJ,
@@ -27,10 +25,10 @@ module.exports.setMenu = asyncHandler(async (req, res) => {
   console.log("menu : " + menu);
   console.log("res.status : " + res.status);
   res.status(200).json(menu);
-});
+};
 
 // fonction pour modifier un menu
-module.exports.editMenu = asyncHandler(async (req, res) => {
+module.exports.editMenu = async (req, res) => {
   const menu = await MenuModel.findById(req.params.id);
 
   if (!menu) {
@@ -44,10 +42,10 @@ module.exports.editMenu = asyncHandler(async (req, res) => {
   });
 
   res.status(200).json(updateMenu);
-});
+};
 
 // fonction pour supprimer un menu
-module.exports.deleteMenu = asyncHandler(async (req, res) => {
+module.exports.deleteMenu = async (req, res) => {
   const menu = await MenuModel.findById(req.params.id);
 
   if (!menu) {
@@ -59,4 +57,4 @@ module.exports.deleteMenu = asyncHandler(async (req, res) => {
   await MenuModel.findByIdAndDelete(req.params.id);
 
   res.status(200).json({ message: "Menu supprimé " + req.params.id });
-});
+};

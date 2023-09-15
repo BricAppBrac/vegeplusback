@@ -5,8 +5,9 @@ const menuSchema = mongoose.Schema(
     user: {
       // type: mongoose.Schema.Types.ObjectId,
       type: String,
-      default: "Melissande",
+      // default: "Melissande",
       ref: "user.model",
+      required: true,
     },
     prefNbJ: {
       type: Number,

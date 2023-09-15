@@ -17,7 +17,7 @@ const userSchema = mongoose.Schema({
   },
   role: {
     type: String,
-    default: "Inconnu",
+    required: true,
   },
   active: {
     type: Boolean,

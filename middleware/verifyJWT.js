@@ -2,11 +2,11 @@ const jwt = require("jsonwebtoken");
 
 const verifyJWT = (req, res, next) => {
   const authHeader = req.headers.authorization || req.headers.Authorization;
-  console.log("**** verifyJWT ****");
-  console.log("authHeader");
-  console.log(authHeader);
+  // console.log("**** verifyJWT ****");
+  // console.log("authHeader");
+  // console.log(authHeader);
   if (!authHeader?.startsWith("Bearer ")) {
-    console.log("- Accès non autorisé -");
+    // console.log("- Accès non autorisé -");
     return res.status(401).json({ message: "- Accès non autorisé -" });
   }
 
