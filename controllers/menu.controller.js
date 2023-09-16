@@ -21,9 +21,9 @@ module.exports.setMenu = async (req, res) => {
   });
   const resultMenu = res.status;
 
-  console.log("setMenu");
-  console.log("menu : " + menu);
-  console.log("res.status : " + res.status);
+  // console.log("setMenu");
+  // console.log("menu : " + menu);
+  // console.log("res.status : " + res.status);
   res.status(200).json(menu);
 };
 

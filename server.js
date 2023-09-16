@@ -30,13 +30,6 @@ const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_USERNAME,
     pass: process.env.EMAIL_PASSWORD,
   },
-  // host: "smtp.office365.com",
-  // port: 587,
-  // secure: true,
-  // auth: {
-  //   user: process.env.EMAIL_USERNAME,
-  //   pass: process.env.EMAIL_PASSWORD,
-  // },
 });
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
@@ -62,7 +55,10 @@ app.post("/send-email", async (req, res) => {
 
     // Options de l'e-mail
     const mailOptions = {
-      from: process.env.EMAIL_USERNAME,
+      from: {
+        name: "Melissande de BricAppBrac",
+        address: "bricappbrac-info@yahoo.com",
+      },
       to: to,
       subject: subject,
       text: text,
