@@ -3,7 +3,7 @@ const express = require("express");
 const {
   getMenus,
   setMenu,
-  editMenu,
+  updateMenu,
   deleteMenu,
 } = require("../controllers/menu.controller");
 const router = express.Router();
@@ -19,7 +19,7 @@ router.get("/", getMenus);
 
 router.post("/", setMenu);
 
-router.put("/:id", editMenu);
+router.put("/:id", updateMenu);
 
 router.delete("/:id", deleteMenu);
 

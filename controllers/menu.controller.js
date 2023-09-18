@@ -28,7 +28,7 @@ module.exports.setMenu = async (req, res) => {
 };
 
 // fonction pour modifier un menu
-module.exports.editMenu = async (req, res) => {
+module.exports.updateMenu = async (req, res) => {
   const menu = await MenuModel.findById(req.params.id);
 
   if (!menu) {
