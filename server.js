@@ -44,6 +44,9 @@ app.use(cors(corsOptions));
 //   })
 // );
 
+// Activer la confiance dans les proxies
+app.set("trust proxy", true);
+
 // Middleware qui permet de traiter les données de la Request
 // Built-in Middleware
 app.use(express.json());
@@ -57,7 +60,7 @@ app.post("/send-email", async (req, res) => {
     const mailOptions = {
       from: {
         name: "Melissande de BricAppBrac",
-        address: "bricappbrac-info@yahoo.com",
+        address: process.env.EMAIL_FRONT,
       },
       to: to,
       subject: subject,
