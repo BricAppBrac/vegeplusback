@@ -1,4 +1,6 @@
-const allowedOrigins = ["https://vegeplus.onrender.com"]; // PRODUCTION
-// ["http://localhost:3000"]; // DEVELOPPEMENT
+// PRODUCTION
+// const allowedOrigins = ["https://vegeplus.onrender.com"];
+// DEVELOPPEMENT
+const allowedOrigins = ["http://localhost:3000"];
 
 module.exports = allowedOrigins;

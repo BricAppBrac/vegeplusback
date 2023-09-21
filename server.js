@@ -45,7 +45,7 @@ app.use(cors(corsOptions));
 // );
 
 // Activer la confiance dans les proxies
-app.set("trust proxy", true);
+// app.set("trust proxy", true);
 
 // Middleware qui permet de traiter les données de la Request
 // Built-in Middleware

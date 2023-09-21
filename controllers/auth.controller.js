@@ -51,9 +51,19 @@ const signup = async (req, res) => {
               "Votre compte a été créé! Veuillez vous connecter dans Espace perso",
           })
         )
-        .catch((error) => res.status(400).json({ error }));
+        .catch((error) =>
+          res.status(400).json({
+            error:
+              "Une erreur 400 s'est produite lors de la création de votre compte.",
+          })
+        );
     })
-    .catch((error) => res.status(500).json({ error }));
+    .catch((error) =>
+      res.status(500).json({
+        error:
+          "Une erreur 500 s'est produite lors de la création de votre compte.",
+      })
+    );
 };
 
 //************ description Login */

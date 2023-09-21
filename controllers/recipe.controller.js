@@ -85,7 +85,9 @@ module.exports.seasonRecipe = async (req, res) => {
       { new: true }
     ).then((data) => res.status(200).send(data));
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({
+      err: "Une erreur 400 s'est produite, requête invalide.",
+    });
   }
 };
 
@@ -98,7 +100,9 @@ module.exports.supprSeasonRecipe = async (req, res) => {
       { new: true }
     ).then((data) => res.status(200).send(data));
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({
+      err: "Une erreur 400 s'est produite, requête invalide.",
+    });
   }
 };
 
@@ -111,7 +115,9 @@ module.exports.ingredientRecipe = async (req, res) => {
       { new: true }
     ).then((data) => res.status(200).send(data));
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({
+      err: "Une erreur 400 s'est produite, requête invalide.",
+    });
   }
 };
 
@@ -124,7 +130,9 @@ module.exports.supprIngredientRecipe = async (req, res) => {
       { new: true }
     ).then((data) => res.status(200).send(data));
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({
+      err: "Une erreur 400 s'est produite, requête invalide.",
+    });
   }
 };
 
@@ -137,7 +145,9 @@ module.exports.quantityIngredient = async (req, res) => {
       { new: true }
     ).then((data) => res.status(200).send(data));
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({
+      err: "Une erreur 400 s'est produite, requête invalide.",
+    });
   }
 };
 
@@ -150,7 +160,9 @@ module.exports.supprQuantityIngredient = async (req, res) => {
       { new: true }
     ).then((data) => res.status(200).send(data));
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({
+      err: "Une erreur 400 s'est produite, requête invalide.",
+    });
   }
 };
 
@@ -163,7 +175,9 @@ module.exports.categoryIngredient = async (req, res) => {
       { new: true }
     ).then((data) => res.status(200).send(data));
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({
+      err: "Une erreur 400 s'est produite, requête invalide.",
+    });
   }
 };
 
@@ -176,7 +190,9 @@ module.exports.supprCategoryIngredient = async (req, res) => {
       { new: true }
     ).then((data) => res.status(200).send(data));
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({
+      err: "Une erreur 400 s'est produite, requête invalide.",
+    });
   }
 };
 
@@ -189,7 +205,9 @@ module.exports.stepRecipe = async (req, res) => {
       { new: true }
     ).then((data) => res.status(200).send(data));
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({
+      err: "Une erreur 400 s'est produite, requête invalide.",
+    });
   }
 };
 
@@ -202,6 +220,8 @@ module.exports.supprStepRecipe = async (req, res) => {
       { new: true }
     ).then((data) => res.status(200).send(data));
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({
+      err: "Une erreur 400 s'est produite, requête invalide.",
+    });
   }
 };
